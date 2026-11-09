@@ -1,0 +1,19 @@
+# .dockerignore
+.git
+.github
+venv
+env
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+htmlcov
+.coverage
+coverage.xml
+report.html
+acceptance-report.html
+pylint-report.txt
+flake8-report.txt
+.vscode
+tests
