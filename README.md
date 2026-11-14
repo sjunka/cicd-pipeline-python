@@ -34,6 +34,8 @@ El workflow está en `.github/workflows/ci.yml` (job `build-and-test`).
 
 - Pull Request de la sección 9: https://github.com/sjunka/cicd-pipeline-python/pull/1
 - Ejecución fallida por el error intencional: https://github.com/sjunka/cicd-pipeline-python/actions/runs/42651209389
+- Ejecución en verde del PR #1 después de corregir el error: https://github.com/sjunka/cicd-pipeline-python/actions/runs/42651370201
+- Ejecución en verde por push a `main`: https://github.com/sjunka/cicd-pipeline-python/actions/runs/42650378808
 - Proyecto en SonarCloud: https://sonarcloud.io/project/overview?id=sjunka_cicd-pipeline-python
 - Imagen en Docker Hub: `sjunka/cicd-pipeline-python` (https://hub.docker.com/r/sjunka/cicd-pipeline-python)
 
