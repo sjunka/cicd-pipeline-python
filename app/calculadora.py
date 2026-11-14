@@ -4,7 +4,7 @@
 # IMPORTANTE: reemplaza ??? con los nombres completos de los 3 integrantes,
 # separados por " | " y en el mismo orden de la sección Integrantes del README.
 # Ejemplo: "Ana María Pérez | Luis Andrés Gómez | Sara Restrepo Ríos"
-AUTOR = "Sergio Junca"
+AUTOR = "Sergio Alfredo Junca Valero | Valeria Cardona Urrea"
 
 
 def sumar(a, b):
