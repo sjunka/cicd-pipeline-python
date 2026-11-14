@@ -85,6 +85,10 @@ Como ejemplo tomo una aplicación web de pedidos para un restaurante: el cliente
 - La protección CSRF necesita una `SECRET_KEY`. Al generarla aleatoria, cada uno de los 4 workers de Gunicorn tendría una clave distinta y el token fallaría según qué worker atendiera la petición. Lo resolví con `--preload` en el `Dockerfile`, que carga la aplicación una sola vez antes de crear los workers. Comprobé que un POST sin token responde 400 y que las pruebas de aceptación pasan contra el contenedor.
 - Aprendí que un Quality Gate en verde no significa 0 issues: la primera ejecución pasó el Quality Gate con 14 issues abiertos, porque el Quality Gate evalúa el código nuevo. Hay que revisar también la vista **Overall Code**.
 
+**Valeria Cardona Urrea:**
+
+- En Windows, PowerShell no me dejó activar el entorno virtual: `.venv\Scripts\Activate.ps1` fallaba porque la política de ejecución bloquea los scripts. Lo resolví con `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, que permite scripts locales solo para mi usuario sin cambiar la configuración del sistema. Aprendí que los pasos de instalación cambian según el sistema operativo, y que por eso el pipeline usa un runner con un entorno definido en lugar de depender de la máquina de cada integrante.
+
 ### 5. Construir, probar y publicar la misma imagen
 
 - **Lo que se prueba es lo que se entrega.** Si la imagen se volviera a construir para publicarla, podría cambiar la imagen base o la versión de alguna dependencia, y lo publicado no sería lo que pasó las pruebas.
