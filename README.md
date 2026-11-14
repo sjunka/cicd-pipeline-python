@@ -78,7 +78,7 @@ Como ejemplo tomo una aplicación web de pedidos para un restaurante: el cliente
 
 ### 4. Problemas y aprendizajes
 
-**Sergio Junca:**
+**Sergio Alfredo Junca Valero:**
 
 - El Python de Homebrew en mi Mac no podía crear entornos virtuales ni instalar paquetes: `pyexpat` no cargaba con la versión de `libexpat` de macOS 26.2. Lo resolví creando el entorno con el Python 3.13 que gestiona `uv` (`uv venv --python 3.13`).
 - SonarCloud no mostró como *Security Hotspots* el modo debug, la falta de CSRF ni el `host="0.0.0.0"`, como describe el taller, sino como vulnerabilidades (issues). Como los issues se deben corregir en el código, quité `debug=True`, dejé `app.run` escuchando solo en localhost y activé la protección CSRF con `CSRFProtect` de Flask-WTF. Para eso agregué el token oculto al formulario y desactivé CSRF solo en el cliente de pruebas de Flask, que no envía el token.
