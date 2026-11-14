@@ -12,6 +12,24 @@ Texto usado en `AUTOR`: `Sergio Junca`
 |---|---|---|
 | Sergio Junca | [sjunka](https://github.com/sjunka) | Propietario del repositorio |
 
+## Fases del pipeline
+
+El workflow está en `.github/workflows/ci.yml` (job `build-and-test`).
+
+| Fase | Herramientas |
+|---|---|
+| Disparo | GitHub Actions: `push` y `pull_request` a `main`, y `workflow_dispatch` |
+| Checkout | `actions/checkout` con historial completo (`fetch-depth: 0`) para SonarCloud |
+| Entorno | `actions/setup-python` (Python 3.13) y `pip install -r requirements-dev.txt` con versiones fijas |
+| Análisis estático | Black (`--check`), Pylint y Flake8 |
+| Pruebas unitarias y de componente | pytest y pytest-cov, con cobertura mínima del 80 % |
+| Build | Imagen Docker (`python:3.13-slim`, Flask servido con Gunicorn) etiquetada con el SHA del commit |
+| Pruebas de aceptación | Contenedor en ejecución y pruebas con Selenium; reporte con pytest-html |
+| Reportes | `actions/upload-artifact` con cobertura, reportes de pruebas, Pylint y Flake8 |
+| Quality gate | SonarCloud; si el quality gate no pasa, el pipeline falla |
+| Publicación | Login con `DOCKERHUB_TOKEN` (GitHub Secrets) y push a Docker Hub con las etiquetas `sha` y `latest`, solo en push a `main` |
+| Notificación | Estado del check en el PR; la protección de `main` exige `build-and-test` |
+
 ## Evidencias
 
 - Pull Request de la sección 9: https://github.com/sjunka/cicd-pipeline-python/pull/1
